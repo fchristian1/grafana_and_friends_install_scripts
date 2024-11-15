@@ -22,7 +22,11 @@
 - create a service file
 - start and enable the service
 
-Tasks: create a overall script as menu to handle all other scripts in the folders.
+## Tasks: 
+- better echo calls
+- functions in external file to (DRY) principle
+- config edit over arguments
+- create a overall script as menu to handle all other scripts in the folders.
 
 ## Using:
 
