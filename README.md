@@ -1,14 +1,17 @@
 # Grafana and Friends - install scripts for easy use
 
-## Recoder's
+## Services ready to install on Ubuntu and RHEL/CentOS(EC2)
+
+### Recoder's
 - Promtail
 - node-eplorer
-## Collector's
+### Collector's
 - Loki
 - Prometheus
-## View
+### View
 - Grafana
-- 
+
+  
 ## what the hack do install.sh
 - install script download the release from the named service on github
 - move and rename binary to the system
