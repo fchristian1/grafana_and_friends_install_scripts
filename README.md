@@ -4,7 +4,7 @@
 
 ### Recoder's
 - Promtail
-- node-eplorer
+- node-exporter
 ### Collector's
 - Loki
 - Prometheus
