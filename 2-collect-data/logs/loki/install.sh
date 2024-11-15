@@ -23,22 +23,27 @@ if [ ! -f "$file" ]; then
   echo "download file"
   curl -LO $url
 fi
+
 echo "unpack file"
 unzip ./$file
 
-mv loki-linux-amd64 loki-$version-linux-amd64
-sudo cp loki-$version-linux-amd64 /usr/local/bin/loki
+exho clean up
+rm $file
 
-echo "clean up"
-sudo rm -rf $folder
+echo "move file"
+mv loki-linux-amd64 loki-$version-linux-amd64
+sudo mv loki-$version-linux-amd64 /usr/local/bin/loki
 
 echo "create config"
 sudo mkdir /etc/loki/
+
 echo download config
 curl -LO $url_config
+
 echo "move config"
 sudo mv loki-local-config.yaml /etc/loki/config.yml
 
+echo check and create user
 if ! id loki >/dev/null 2>&1; then
   sudo useradd -rs /bin/false loki
 fi
@@ -48,6 +53,7 @@ if ! systemctl is-active --quiet loki.service; then
   echo "stopping service"
   sudo systemctl stop loki
 fi
+
 echo create service file
 sudo tee /etc/systemd/system/loki.service >/dev/null <<EOF
 [Unit]
