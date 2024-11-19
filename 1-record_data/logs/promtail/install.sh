@@ -156,7 +156,9 @@ After=network.target
 User=promtail
 Group=promtail
 Type=simple
-ExecStart=/usr/local/bin/promtail -config.file=/etc/promtail/config.yml
+ExecStart=/usr/local/bin/promtail \
+    -config.file=/etc/promtail/config.yml \
+    -config.expand-env=true
 
 [Install]
 WantedBy=multi-user.target

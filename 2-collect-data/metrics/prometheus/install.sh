@@ -119,7 +119,8 @@ After=network.target
 User=prometheus
 Group=prometheus
 Type=simple
-ExecStart=/usr/local/bin/prometheus --config.file=/etc/prometheus/config.yml
+ExecStart=/usr/local/bin/prometheus \
+    -config.file=/etc/prometheus/config.yml
 Restart=always
 RestartSec=5
 StartLimitBurst=5
