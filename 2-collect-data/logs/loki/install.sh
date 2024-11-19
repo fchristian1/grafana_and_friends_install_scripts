@@ -157,7 +157,7 @@ fi;
 echo create service file
 sudo tee /etc/systemd/system/loki.service > /dev/null <<EOF
 [Unit]
-Description=Node Exporter
+Description=Loki Log Collector
 After=network.target
 
 [Service]
@@ -165,10 +165,15 @@ User=loki
 Group=loki
 Type=simple
 ExecStart=/usr/local/bin/loki -config.file=/etc/loki/config.yml
+Restart=always
+RestartSec=5
+StartLimitBurst=5
+StartLimitIntervalSec=60
 
 [Install]
 WantedBy=multi-user.target
 EOF
+
 echo "reload daemon"
 sudo systemctl daemon-reload
 echo "start service"
