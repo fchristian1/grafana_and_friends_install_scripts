@@ -27,8 +27,8 @@ if [ "$OS" == "ubuntu" ]; then
         sudo dpkg -i grafana_11.3.0+security~01_amd64.deb &&
         sudo systemctl enable grafana-server &&
         sudo systemctl start grafana-server
-
-elif [ "$OS" == "centos" ]; then
+#centos or amazon linux
+elif [ "$OS" == "centos" ] || [ "$OS" == "amzn" ]; then
     echo "Installing Grafana on CentOS"
     sudo yum install -y https://dl.grafana.com/oss/release/grafana-"$version"-1.x86_64.rpm &&
         sudo systemctl enable grafana-server &&
