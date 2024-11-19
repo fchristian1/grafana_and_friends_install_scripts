@@ -49,15 +49,15 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9100']
 EOF
+echo "add user"
+if ! id prometheus >/dev/null 2>&1; then
+    sudo useradd -rs /bin/false prometheus
+fi
 echo "create folders"
 sudo mkdir /data/prometheus -p
 sudo chown prometheus:prometheus /data/prometheus
 sudo chmod 755 /data/prometheus
 
-echo "add user"
-if ! id prometheus >/dev/null 2>&1; then
-    sudo useradd -rs /bin/false prometheus
-fi
 echo "stopping service"
 if ! systemctl is-active --quiet prometheus.service; then
     sudo systemctl stop prometheus
