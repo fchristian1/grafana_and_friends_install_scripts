@@ -100,7 +100,7 @@ if [ -f /etc/debian_version ]; then
             static_configs:
         - targets:
             - localhost
-            labels:
+              labels:
                 job: varlogs
                 #NOTE: Need to be modified to scrape any additional logs of the system.
                 __path__: /var/log/syslog
@@ -149,7 +149,7 @@ fi
 echo create service file
 sudo tee /etc/systemd/system/promtail.service >/dev/null <<EOF
 [Unit]
-Description=Node Exporter
+Description=Promtail Log Shipper
 After=network.target
 
 [Service]
