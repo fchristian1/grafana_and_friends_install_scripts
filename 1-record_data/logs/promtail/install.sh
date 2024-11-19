@@ -105,14 +105,14 @@ if [ -f /etc/debian_version ]; then
         - url: http://localhost:3100/loki/api/v1/push
 
     scrape_configs:
-        - job_name: system
-            static_configs:
-                - targets:
-                    - localhost
-                  labels:
-                    job: varlogs
-                    #NOTE: Need to be modified to scrape any additional logs of the system.
-                    __path__: /var/log/syslog
+    - job_name: system
+      static_configs:
+      - targets:
+        - localhost
+        labels:
+          job: varlogs
+          __path__: /var/log/syslog
+          stream: stdout
 EOF
 else
     sudo tee /etc/promtail/config.yml >/dev/null <<EOF
