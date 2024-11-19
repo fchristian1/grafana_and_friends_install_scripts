@@ -97,13 +97,13 @@ if [ -f /etc/debian_version ]; then
 
     scrape_configs:
         - job_name: system
-          static_configs:
+            static_configs:
         - targets:
-          - localhost
-          labels:
-            job: varlogs
-            #NOTE: Need to be modified to scrape any additional logs of the system.
-            __path__: /var/log/syslog
+            - localhost
+            labels:
+                job: varlogs
+                #NOTE: Need to be modified to scrape any additional logs of the system.
+                __path__: /var/log/syslog
 EOF
 else
     sudo tee /etc/promtail/config.yml >/dev/null <<EOF
@@ -125,14 +125,14 @@ else
     scrape_configs:
       - job_name: journal
         journal:
-        json: false
-        max_age: 12h
-        path: /var/log/journal
-        labels:
-          job: systemd-journal
-        relabel_configs:
-        - source_labels: ['__journal__systemd_unit']
-          target_label: 'unit'
+          json: false
+          max_age: 12h
+          path: /var/log/journal
+          labels:
+            job: systemd-journal
+            relabel_configs:
+              - source_labels: ['__journal__systemd_unit']
+                target_label: 'unit'
 EOF
 fi
 
