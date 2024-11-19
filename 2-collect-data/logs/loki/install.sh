@@ -82,3 +82,15 @@ echo "start service"
 sudo systemctl start loki
 echo "enable service"
 sudo systemctl enable loki
+
+echo "Loki installed successfully"
+echo "Loki is running on port 3100"
+echo "Service: sudo systemctl status loki.service"
+publicip=$(curl http://checkip.amazonaws.com)
+if [ $publicip ]; then
+  echo "http://$publicip:3100"
+  echo "http://localhost:3100"
+else
+  echo "http://localhost:3100"
+fi
+read -p "Press enter to continue"

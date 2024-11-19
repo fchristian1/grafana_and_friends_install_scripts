@@ -55,3 +55,15 @@ echo "start service"
 sudo systemctl start node_exporter
 echo "enable service"
 sudo systemctl enable node_exporter
+
+echo "Node-Exporter installed successfully"
+echo "Node-Exporter is running on port 9100"
+echo "Service: sudo systemctl status node_exporter.service"
+publicip=$(curl http://checkip.amazonaws.com)
+if [ $publicip ]; then
+    echo "http://$publicip:9100"
+    echo "http://localhost:9100"
+else
+    echo "http://localhost:9100"
+fi
+read -p "Press enter to continue"

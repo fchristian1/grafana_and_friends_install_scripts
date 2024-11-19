@@ -39,9 +39,14 @@ else
 
 fi
 clear
+echo "Grafana installed successfully"
+echo "Grafana is running on port 3000"
+echo "Service: sudo systemctl status grafana-server.servcie"
 publicip=$(curl http://checkip.amazonaws.com)
 if [ $publicip ]; then
     echo "http://$publicip:3000"
+    echo "http://localhost:3000"
 else
     echo "http://localhost:3000"
 fi
+read -p "Press enter to continue"

@@ -89,3 +89,15 @@ echo "start service"
 sudo systemctl start prometheus
 echo "enable service"
 sudo systemctl enable prometheus
+
+echo "Prometheus installed successfully"
+echo "Prometheus is running on port 9090"
+echo "Service: sudo systemctl status prometheus.service"
+publicip=$(curl http://checkip.amazonaws.com)
+if [ $publicip ]; then
+    echo "http://$publicip:9090"
+    echo "http://localhost:9090"
+else
+    echo "http://localhost:30909000"
+fi
+read -p "Press enter to continue"
