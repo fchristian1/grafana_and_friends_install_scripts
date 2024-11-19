@@ -22,19 +22,26 @@ version=$(echo $version | sed 's/-/~/g')
 if [ "$OS" == "ubuntu" ]; then
     echo "Installing Grafana on Ubuntu"
     # $version replace - to ~
-    sudo apt update && sudo apt-get install -y adduser libfontconfig1 musl && \
-    wget https://dl.grafana.com/oss/release/grafana_"$version"_amd64.deb && \
-    sudo dpkg -i grafana_11.3.0+security~01_amd64.deb && \
-    sudo systemctl enable grafana-server && \
-    sudo systemctl start grafana-server
+    sudo apt update && sudo apt-get install -y adduser libfontconfig1 musl &&
+        wget https://dl.grafana.com/oss/release/grafana_"$version"_amd64.deb &&
+        sudo dpkg -i grafana_11.3.0+security~01_amd64.deb &&
+        sudo systemctl enable grafana-server &&
+        sudo systemctl start grafana-server
 #centos or amazon linux
 elif [ "$OS" == "centos" ] || [ "$OS" == "amzn" ]; then
     echo "Installing Grafana on CentOS"
-    sudo yum install -y https://dl.grafana.com/oss/release/grafana-"$version"-1.x86_64.rpm && \
-    sudo systemctl enable grafana-server && \
-    sudo systemctl start grafana-server
+    sudo yum install -y https://dl.grafana.com/oss/release/grafana-"$version"-1.x86_64.rpm &&
+        sudo systemctl enable grafana-server &&
+        sudo systemctl start grafana-server
 else
     echo "OS not supported"
     exit 1
 
+fi
+clear
+publicip=$(curl http://checkip.amazonaws.com)
+if [ $publicip ]; then
+    echo "http://$publicip:3000"
+else
+    echo "http://localhost:3000"
 fi
