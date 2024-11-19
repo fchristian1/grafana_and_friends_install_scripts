@@ -50,8 +50,8 @@ scrape_configs:
       - targets: ['localhost:9100']
 EOF
 echo "create folders"
-sudo mkdir /data/ -p
-sudo chmod 777 /data
+sudo mkdir /data/prometheus -p
+sudo chmod 777 /data/prometheus
 
 echo "add user"
 if ! id prometheus >/dev/null 2>&1; then
@@ -73,7 +73,7 @@ Group=prometheus
 Type=simple
 ExecStart=/usr/local/bin/prometheus \
     -config.file=/etc/prometheus/config.yml \
-    -storage.tsdb.path=/data \
+    -storage.tsdb.path=/data/prometheus \
     -log.level=info
 Restart=always
 RestartSec=5
