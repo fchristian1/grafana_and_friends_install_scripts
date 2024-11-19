@@ -2,6 +2,15 @@
 
 ## Services ready to install on Ubuntu and RHEL/CentOS(EC2)
 clone repository go into the folder an start install script
+```bash
+# Ubuntu
+sudo yum update && sudo yum install -y git
+```
+
+```bash
+# CentOs
+sudo apt update && sudo apt install -y git
+```
 
 ```bash
 git clone https://github.com/fchristian1/grafana_and_friends_install_scripts.git
