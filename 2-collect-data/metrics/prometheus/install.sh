@@ -51,7 +51,8 @@ scrape_configs:
 EOF
 echo "create folders"
 sudo mkdir /data/prometheus -p
-sudo chmod 777 /data/prometheus
+sudo chown prometheus:prometheus /data/prometheus
+sudo chmod 755 /data/prometheus
 
 echo "add user"
 if ! id prometheus >/dev/null 2>&1; then

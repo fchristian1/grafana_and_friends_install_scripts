@@ -49,4 +49,8 @@ if [ $publicip ]; then
 else
     echo "http://localhost:3000"
 fi
+echo ""
+echo "Default username: admin"
+echo "Default password: admin"
+echo ""
 read -p "Press enter to continue"
