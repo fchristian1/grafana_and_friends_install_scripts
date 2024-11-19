@@ -171,7 +171,8 @@ Group=promtail
 Type=simple
 ExecStart=/usr/local/bin/promtail \
     -config.file=/etc/promtail/config.yml \
-    -config.expand-env=true
+    -config.expand-env=true \
+    -log.level=info
 
 [Install]
 WantedBy=multi-user.target
