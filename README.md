@@ -10,13 +10,13 @@ cd grafana_and_friends_install_scripts
 ```
 
 ### Recoder's
-- Promtail       its a pull service
-- node-exporter  http://locahost:9100
+- Promtail - its a pull service
+- node-exporter - http://locahost:9100
 ### Collector's
-- Loki           http://locahost:3100
-- Prometheus     http://locahost:9090
+- Loki - http://locahost:3100
+- Prometheus - http://locahost:9090
 ### View
-- Grafana        http://locahost:3000
+- Grafana - http://locahost:3000
 
   
 ## what the hack do install
