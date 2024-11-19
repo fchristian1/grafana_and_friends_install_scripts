@@ -22,6 +22,7 @@ version=$(echo $version | sed 's/-/~/g')
 if [ "$OS" == "ubuntu" ]; then
     echo "Installing Grafana on Ubuntu"
     # $version replace - to ~
+    sudo apt update && sudo apt upgrade -y && sudo apt install -y musl && 
     wget https://dl.grafana.com/oss/release/grafana_"$version"_amd64.deb && \
     sudo dpkg -i grafana_11.3.0+security~01_amd64.deb && \
     sudo systemctl enable grafana-server && \
