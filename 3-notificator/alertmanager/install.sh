@@ -1,5 +1,5 @@
 #!/bin/bash
-tags=($("../../../common/getTagsFromRepository.sh" https://github.com/prometheus/alertmanager.git))
+tags=($("../../common/getTagsFromRepository.sh" https://github.com/prometheus/alertmanager.git))
 index=$((${#tags[@]} - 1))
 echo $1
 
@@ -7,7 +7,7 @@ echo $1
 
 version=$(
     (
-        ../../../common/menuSelectOnThree.sh $index "${tags[@]}"
+        ../../common/menuSelectOnThree.sh $index "${tags[@]}"
     ) | tee /dev/null
 )
 
