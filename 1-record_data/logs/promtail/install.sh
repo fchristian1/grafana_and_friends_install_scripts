@@ -149,7 +149,11 @@ if ! id promtail >/dev/null 2>&1; then
     sudo useradd -rs /bin/false promtail
 fi
 sudo chmod 641 /var/log/syslog
-sudo usermod -aG adm promtail
+if [ -f /etc/debian_version ]; then
+    sudo usermod -aG adm promtail
+else
+    sudo usermod -aG systemd-journal promtail
+fi
 
 if ! systemctl is-active --quiet promtail.service; then
     echo "stopping service"
