@@ -47,17 +47,6 @@ receivers:
     email_configs:
       - to: 'your-email@yourdomain.com'
         send_resolved: true
-groups:
-  - name: cpu_alerts
-    rules:
-      - alert: HighCPULoad
-        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
-        for: 2m
-        labels:
-          severity: warning
-        annotations:
-          summary: "Hohe CPU-Auslastung auf {{ $labels.instance }}"
-          description: "Die CPU-Auslastung auf {{ $labels.instance }} ist über 80%. (Wert: {{ $value }})"
 EOF
 echo "add user"
 if ! id alertmanager >/dev/null 2>&1; then

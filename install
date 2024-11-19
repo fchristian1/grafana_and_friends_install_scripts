@@ -8,9 +8,8 @@ folderStart=$(pwd)
 
 # Function to display the menu
 display_menu() {
-    tput civis   # Hide cursor
-    tput cup 0 0 # Move cursor to top-left corner
-    echo "Install Menu use arrow keys or w and s to move up and down, Enter start install"
+    clear
+    echo "Install Menu"
     echo "------------"
     i=0
     for file in $installFiles; do
@@ -25,14 +24,12 @@ display_menu() {
     done
     echo "     q to Quit"
     echo "------------"
-    tput cnorm # Show cursor
 }
 
 # Initialize selected option
 selected=1
 
 # Main loop
-tput clear
 while true; do
     display_menu
     read -rsn1 input
@@ -58,4 +55,3 @@ while true; do
         ;;
     esac
 done
-tput cnorm # Ensure cursor is shown when script exits
