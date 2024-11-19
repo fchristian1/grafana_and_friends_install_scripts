@@ -112,7 +112,7 @@ fi;
 echo create service file
 sudo tee /etc/systemd/system/prometheus.service > /dev/null <<EOF
 [Unit]
-Description=Node Exporter
+Description=Prometheus Service
 After=network.target
 
 [Service]
