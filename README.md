@@ -1,6 +1,13 @@
 # Grafana and Friends - install scripts for easy use
 
 ## Services ready to install on Ubuntu and RHEL/CentOS(EC2)
+clone repository go into the folder an start install script
+
+```bash
+git clone https://github.com/fchristian1/grafana_and_friends_install_scripts.git
+cd grafana_and_friends_install_scripts
+./install
+```
 
 ### Recoder's
 - Promtail
@@ -12,8 +19,9 @@
 - Grafana
 
   
-## what the hack do install.sh
-- you can select the version from the system
+## what the hack do install
+- select the service do you want to install
+- you can select the version from the service
 - install script download the release from the named service on github
 - move and rename binary to the system
 - create config
