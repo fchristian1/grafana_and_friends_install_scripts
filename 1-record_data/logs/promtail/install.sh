@@ -130,9 +130,9 @@ else
           path: /var/log/journal
           labels:
             job: systemd-journal
-            relabel_configs:
-              - source_labels: ['__journal__systemd_unit']
-                target_label: 'unit'
+          relabel_configs:
+            - source_labels: ['__journal__systemd_unit']
+              target_label: 'unit'
 EOF
 fi
 
