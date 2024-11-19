@@ -112,7 +112,7 @@ fi;
 echo create service file
 sudo tee /etc/systemd/system/prometheus.service > /dev/null <<EOF
 [Unit]
-Description=Node Exporter
+Description=Prometheus Service
 After=network.target
 
 [Service]
@@ -120,6 +120,10 @@ User=prometheus
 Group=prometheus
 Type=simple
 ExecStart=/usr/local/bin/prometheus --config.file=/etc/prometheus/config.yml
+Restart=always
+RestartSec=5
+StartLimitBurst=5
+StartLimitIntervalSec=60
 
 [Install]
 WantedBy=multi-user.target
