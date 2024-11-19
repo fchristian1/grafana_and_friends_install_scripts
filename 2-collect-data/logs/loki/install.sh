@@ -23,7 +23,15 @@ if [ ! -f "$file" ]; then
   echo "download file"
   curl -LO $url
 fi
-
+#check if unzip is installed
+if ! command -v unzip &>/dev/null; then
+  echo "unzip could not be found"
+  if [ -f /etc/debian_version ]; then
+    sudo apt-get install unzip
+  else
+    sudo yum install unzip
+  fi
+fi
 echo "unpack file"
 unzip ./$file
 
