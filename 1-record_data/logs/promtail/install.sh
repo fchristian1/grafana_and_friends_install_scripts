@@ -86,24 +86,24 @@ if [ -f /etc/debian_version ]; then
     # https://github.com/grafana/loki/issues/11398
 
     server:
-    http_listen_port: 9080
-    grpc_listen_port: 0
+        http_listen_port: 9080
+        grpc_listen_port: 0
 
     positions:
-    filename: /tmp/positions.yaml
+        filename: /tmp/positions.yaml
 
     clients:
-    - url: http://localhost:3100/loki/api/v1/push
+        - url: http://localhost:3100/loki/api/v1/push
 
     scrape_configs:
-    - job_name: system
-    static_configs:
-    - targets:
-        - localhost
-        labels:
-        job: varlogs
-        #NOTE: Need to be modified to scrape any additional logs of the system.
-        __path__: /var/log/syslog
+        - job_name: system
+          static_configs:
+        - targets:
+          - localhost
+          labels:
+            job: varlogs
+            #NOTE: Need to be modified to scrape any additional logs of the system.
+            __path__: /var/log/syslog
 EOF
 else
     sudo tee /etc/promtail/config.yml >/dev/null <<EOF
@@ -113,14 +113,14 @@ else
     # https://github.com/grafana/loki/issues/11398
 
     server:
-    http_listen_port: 9080
-    grpc_listen_port: 0
+      http_listen_port: 9080
+      grpc_listen_port: 0
 
     positions:
-    filename: /tmp/positions.yaml
+      filename: /tmp/positions.yaml
 
     clients:
-    - url: http://localhost:3100/loki/api/v1/push
+      - url: http://localhost:3100/loki/api/v1/push
 
     scrape_configs:
       - job_name: journal
@@ -129,10 +129,10 @@ else
         max_age: 12h
         path: /var/log/journal
         labels:
-            job: systemd-journal
+          job: systemd-journal
         relabel_configs:
         - source_labels: ['__journal__systemd_unit']
-            target_label: 'unit'
+          target_label: 'unit'
 EOF
 fi
 
