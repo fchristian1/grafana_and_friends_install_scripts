@@ -6,9 +6,9 @@ echo $1
 # execute the menuSelectOnThree.sh script with two parameters tags and index to return the selected version
 
 version=$(
-    (
-        ../../common/menuSelectOnThree.sh $index "${tags[@]}"
-    ) | tee /dev/null
+  (
+    ../../common/menuSelectOnThree.sh $index "${tags[@]}"
+  ) | tee /dev/null
 )
 
 url="https://github.com/prometheus/alertmanager/releases/download/v$version/alertmanager-$version.linux-amd64.tar.gz"
@@ -17,7 +17,7 @@ folder="alertmanager-$version.linux-amd64"
 
 echo "download file"
 if [ ! -f "$file" ]; then
-    curl -LO $url
+  curl -LO $url
 fi
 echo "unpack file"
 tar -xvf $file
@@ -50,7 +50,7 @@ receivers:
 EOF
 echo "add user"
 if ! id alertmanager >/dev/null 2>&1; then
-    sudo useradd -rs /bin/false alertmanager
+  sudo useradd -rs /bin/false alertmanager
 fi
 
 echo "create folders"
@@ -60,7 +60,7 @@ sudo chmod 755 /data/alertmanager
 
 echo "stopping service"
 if ! systemctl is-active --quiet alertmanager.service; then
-    sudo systemctl stop alertmanager
+  sudo systemctl stop alertmanager
 fi
 echo create service file
 sudo tee /etc/systemd/system/alertmanager.service >/dev/null <<EOF
@@ -94,9 +94,12 @@ echo "Alertmanager is running on port 9090"
 echo "Service: sudo systemctl status alertmanager.service"
 publicip=$(curl http://checkip.amazonaws.com)
 if [ $publicip ]; then
-    echo "http://$publicip:9090"
-    echo "http://localhost:9090"
+  echo "http://$publicip:9093 - for push alerts and web ui"
+  echo "http://$publicip:9094 - for cluster alertmanager's"
+  echo "http://localhost:9093 - for push alerts and web ui"
+  echo "http://localhost:9094 - for cluster alertmanager's"
 else
-    echo "http://localhost:30909000"
+  echo "http://localhost:3093 - for push alerts and web ui"
+  echo "http://localhost:3094 - for cluster alertmanager's"
 fi
 read -p "Press enter to continue"
