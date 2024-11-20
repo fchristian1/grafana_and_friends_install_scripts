@@ -51,6 +51,7 @@ while true; do
             cd $folder
             ./install.sh
             cd $folderStart
+            exit 0
         fi
         ;;
     esac
