@@ -101,4 +101,3 @@ if [ $publicip ]; then
 else
     echo "http://localhost:30909000"
 fi
-read -p "Press enter to continue"

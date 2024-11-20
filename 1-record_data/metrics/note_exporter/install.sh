@@ -66,4 +66,3 @@ if [ $publicip ]; then
 else
     echo "http://localhost:9100"
 fi
-read -p "Press enter to continue"

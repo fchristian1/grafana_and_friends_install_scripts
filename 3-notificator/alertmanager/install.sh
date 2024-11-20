@@ -102,4 +102,3 @@ else
   echo "http://localhost:3093 - for push alerts and web ui"
   echo "http://localhost:3094 - for cluster alertmanager's"
 fi
-read -p "Press enter to continue"

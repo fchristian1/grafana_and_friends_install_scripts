@@ -101,4 +101,3 @@ if [ $publicip ]; then
 else
   echo "http://localhost:3100"
 fi
-read -p "Press enter to continue"

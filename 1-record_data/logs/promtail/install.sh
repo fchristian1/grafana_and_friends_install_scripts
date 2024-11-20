@@ -143,4 +143,3 @@ echo "config: /etc/promtail/config.yml"
 
 echo "Promtail installed successfully"
 echo "Service: sudo systemctl status promtail.service"
-read -p "Press enter to continue"
