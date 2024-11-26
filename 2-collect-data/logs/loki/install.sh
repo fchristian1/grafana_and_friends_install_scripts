@@ -45,7 +45,7 @@ sudo mv loki-$version-linux-amd64 /usr/local/bin/loki
 echo "create config"
 sudo mkdir /etc/loki/
 
-echo download config
+echo "download config"
 curl -LO $url_config
 
 echo "move config"
@@ -73,8 +73,7 @@ User=loki
 Group=loki
 Type=simple
 ExecStart=/usr/local/bin/loki \
-  -config.file=/etc/loki/config.yml \
-  -log.level=info
+  -config.file=/etc/loki/config.yml
 Restart=always
 RestartSec=5
 StartLimitBurst=5
