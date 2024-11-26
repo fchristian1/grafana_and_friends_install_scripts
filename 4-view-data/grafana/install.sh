@@ -21,7 +21,7 @@ fi
 version=$(echo $version | sed 's/-/~/g')
 if [ "$OS" == "ubuntu" ]; then
     echo "Installing Grafana on Ubuntu"
-    # $version replace - to ~
+    sudo apt remove -y grafana
     sudo apt update && sudo apt-get install -y adduser libfontconfig1 musl &&
         wget https://dl.grafana.com/oss/release/grafana_"$version"_amd64.deb &&
         sudo dpkg -i grafana_11.3.0+security~01_amd64.deb &&
@@ -30,6 +30,7 @@ if [ "$OS" == "ubuntu" ]; then
 #centos or amazon linux
 elif [ "$OS" == "centos" ] || [ "$OS" == "amzn" ]; then
     echo "Installing Grafana on CentOS"
+    sudo yum remove -y grafana
     sudo yum install -y https://dl.grafana.com/oss/release/grafana-"$version"-1.x86_64.rpm &&
         sudo systemctl enable grafana-server &&
         sudo systemctl start grafana-server
